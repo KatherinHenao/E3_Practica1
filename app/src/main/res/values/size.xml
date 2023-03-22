@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TEXT-->
+    <dimen name="main_operand">18sp</dimen>
+    <dimen name="main_operand_info">18sp</dimen>
+    <dimen name="main_result_info">18sp</dimen>
+    <dimen name="main_result">18sp</dimen>
+    <dimen name="main_button_operation">32sp</dimen>
+    <dimen name="main_solve">32sp</dimen>
+    <!--HEIGHT-->
+    <dimen name="main_operand_height">48dp</dimen>
+    <dimen name="main_result_height">48dp</dimen>
+    <!--WIDTH-->
+    <dimen name="main_button_operation_witdh">92dp</dimen>
+    <dimen name="main_solve_width">180dp</dimen>
+</resources>

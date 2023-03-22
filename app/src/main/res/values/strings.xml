@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">E3_P1_Calculadora</string>
+    <!--TEXT-->
+    <string name="app_name">Calculadora</string>
+    <string name="main_operand1_info">Operador 1</string>
+    <string name="main_operand2_info">Operador 2</string>
+    <string name="main_result_info">Resultado</string>
+    <string name="main_button_operation_1">+</string>
+    <string name="main_button_operation_2">-</string>
+    <string name="main_button_operation_3">*</string>
+    <string name="main_button_operation_4">/</string>
+    <string name="main_solve">Operar</string>
+
+    <!--HINTS-->
+    <string name="main_operand1_hint">Ingrese</string>
+    <string name="main_operand2_hint">Ingrese</string>
+    <string name="main_result_hint">Elija una operación</string>
 </resources>
