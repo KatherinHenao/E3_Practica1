@@ -14,4 +14,6 @@
     <string name="main_operand1_hint">Ingrese</string>
     <string name="main_operand2_hint">Ingrese</string>
     <string name="main_result_hint">Elija una operación</string>
+    <string name="splash_content_description">Icon</string>
+
 </resources>

@@ -16,4 +16,6 @@
     <color name="main_operand_bground">@color/White</color>
     <color name="main_buttons_Bground">@color/purple_500</color>
     <color name="main_solve_Bground">@color/Red</color>
+
+    <color name = "splash_bground">@color/DarkGray</color>
 </resources>
