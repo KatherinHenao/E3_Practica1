@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     private var operation = ""
     private val timer = Timer()
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
