@@ -1,0 +1,19 @@
+<resources>
+    <!--TEXT-->
+    <string name="app_name">Calculator</string>
+    <string name="main_operand1_info">Operator 1</string>
+    <string name="main_operand2_info">Operator 2</string>
+    <string name="main_result_info">Result</string>
+    <string name="main_button_operation_1">+</string>
+    <string name="main_button_operation_2">-</string>
+    <string name="main_button_operation_3">*</string>
+    <string name="main_button_operation_4">/</string>
+    <string name="main_solve">Operate</string>
+
+    <!--HINTS-->
+    <string name="main_operand1_hint">Enter</string>
+    <string name="main_operand2_hint">Enter</string>
+    <string name="main_result_hint">Choose an operation</string>
+    <string name="splash_content_description">Icon</string>
+
+</resources>
