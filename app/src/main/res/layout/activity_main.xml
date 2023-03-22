@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/operador1Info_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/main_info"
+        android:text="@string/main_operand1_info"
+        android:textColor="@color/main_operand_info"
+        android:textSize="@dimen/main_operand_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/operador2Info_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/main_info"
+        android:text="@string/main_operand2_info"
+        android:textColor="@color/main_operand_info"
+        android:textSize="@dimen/main_operand_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/operador1_editText"
+        android:layout_width="142dp"
+        android:layout_height="@dimen/main_operand_height"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/main_operand"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/main_operand1_hint"
+        android:importantForAutofill="no"
+        android:inputType="numberSigned|numberDecimal"
+        android:textColor="@color/main_operand"
+        android:textColorHint="@color/main_operand_hint"
+        android:textSize="@dimen/main_operand"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/operador1Info_textView"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/operador2_editText"
+        android:layout_width="142dp"
+        android:layout_height="@dimen/main_operand_height"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/main_operand"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/main_operand2_hint"
+        android:importantForAutofill="no"
+        android:inputType="numberSigned|numberDecimal"
+        android:textColor="@color/main_operand"
+        android:textColorHint="@color/main_operand_hint"
+        android:textSize="@dimen/main_operand"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/operador2Info_textView" />
+
+    <TextView
+        android:id="@+id/resultInfo_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="140dp"
+        android:background="@drawable/main_info"
+        android:gravity="center"
+        android:text="@string/main_result_info"
+        android:textColor="@color/main_result_info"
+        android:textSize="@dimen/main_result_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operador1_editText" />
+
+    <TextView
+        android:id="@+id/result_textView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_result_height"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/main_result"
+        android:gravity="center"
+        android:hint="@string/main_result_hint"
+        android:textColor="@color/main_result"
+        android:textColorHint="@color/main_result_hint"
+        android:textSize="@dimen/main_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultInfo_textView" />
+
+    <Button
+        android:id="@+id/operand1_button"
+        android:layout_width="@dimen/main_button_operation_witdh"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/main_buttons_Bground"
+        android:text="@string/main_button_operation_1"
+        android:textColor="@color/main_button_operation"
+        android:textSize="@dimen/main_button_operation"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/result_textView" />
+
+    <Button
+        android:id="@+id/operand2_button"
+        android:layout_width="@dimen/main_button_operation_witdh"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/main_buttons_Bground"
+        android:text="@string/main_button_operation_2"
+        android:textColor="@color/main_button_operation"
+        android:textSize="@dimen/main_button_operation"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/result_textView" />
+
+    <Button
+        android:id="@+id/operand3_button"
+        android:layout_width="@dimen/main_button_operation_witdh"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/main_buttons_Bground"
+        android:text="@string/main_button_operation_3"
+        android:textColor="@color/main_button_operation"
+        android:textSize="@dimen/main_button_operation"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/operand1_button" />
+
+    <Button
+        android:id="@+id/operand4_button"
+        android:layout_width="@dimen/main_button_operation_witdh"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/main_buttons_Bground"
+        android:text="@string/main_button_operation_4"
+        android:textColor="@color/main_button_operation"
+        android:textSize="@dimen/main_button_operation"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/operand2_button" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="202dp"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/solve_button"
+        android:layout_width="@dimen/main_solve_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="100dp"
+        android:backgroundTint="@color/main_solve_Bground"
+        android:text="@string/main_solve"
+        android:textColor="@color/main_solve"
+        android:textSize="@dimen/main_solve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operand3_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

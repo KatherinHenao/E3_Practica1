@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TEXT-->
+    <color name="main_operand">@color/black</color>
+    <color name="main_operand_info">@color/Blue</color>
+    <color name="main_result_info">@color/OrangeRed</color>
+    <color name="main_result">@color/black</color>
+    <color name="main_button_operation">@color/white</color>
+    <color name="main_solve">@color/white</color>
+    <!--HINT-->
+    <color name="main_operand_hint">#689F38</color>
+    <color name="main_result_hint">#FF0000</color>
+    <!--BACKGROUND-->
+    <color name="main_result_bground">@color/White</color>
+    <color name="main_info_bground">@color/White</color>
+    <color name="main_operand_bground">@color/White</color>
+    <color name="main_buttons_Bground">@color/purple_500</color>
+    <color name="main_solve_Bground">@color/Red</color>
+</resources>
