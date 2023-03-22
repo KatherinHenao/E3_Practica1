@@ -1,7 +1,8 @@
-package com.khenao.e3_p1_calculadora
+package com.khenao.e3_p1_calculadora.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.khenao.e3_p1_calculadora.R
 
 import com.khenao.e3_p1_calculadora.databinding.ActivityMainBinding
 import java.util.*
