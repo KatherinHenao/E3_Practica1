@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity() {
                     ContextCompat.getColor(
                         applicationContext,
                         R.color.Crimson
+
                     )
                 )
                 operand1Button.setBackgroundColor(
