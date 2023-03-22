@@ -2,15 +2,17 @@ package com.khenao.e3_p1_calculadora.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.khenao.e3_p1_calculadora.R
 
 import com.khenao.e3_p1_calculadora.databinding.ActivityMainBinding
 import java.util.*
 import kotlin.concurrent.timerTask
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
+    private lateinit var mainViewModel: MainViewModel
     private var operation = ""
     private val timer = Timer()
 
@@ -20,87 +22,191 @@ class MainActivity : AppCompatActivity() {
         val view = mainBinding.root
         setContentView(view)
 
-        with(mainBinding){
-            operand1Button.setOnClickListener {
-                operation = operand1Button.text.toString()
-                operand1Button.setBackgroundColor(resources.getColor(R.color.Crimson))
-                operand2Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand3Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand4Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+        with(mainBinding) {
+            mainViewModel.operand1EmptyLiveData.observe(this@MainActivity) { operand1EmptyMutableLiveData ->
+                if (operand1EmptyMutableLiveData) {
+                    operador1Warning()
+                }
             }
 
-            operand2Button.setOnClickListener {
-                operation = operand2Button.text.toString()
-                operand2Button.setBackgroundColor(resources.getColor(R.color.Crimson))
-                operand1Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand3Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand4Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
+            mainViewModel.operand2EmptyLiveData.observe(this@MainActivity) { operand2EmptyMutableLiveData ->
+                if (operand2EmptyMutableLiveData) {
+                    operador2Warning()
+                }
             }
 
-            operand3Button.setOnClickListener {
-                operation = operand3Button.text.toString()
-                operand3Button.setBackgroundColor(resources.getColor(R.color.Crimson))
-                operand1Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand2Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand4Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
+            mainViewModel.operationWarningLiveData.observe(this@MainActivity) { operationWarningMutableLiveData ->
+                if (operationWarningMutableLiveData) {
+                    operationWarning()
+                }
             }
 
-            operand4Button.setOnClickListener {
-                operation = operand4Button.text.toString()
-                operand4Button.setBackgroundColor(resources.getColor(R.color.Crimson))
-                operand1Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand2Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-                operand3Button.setBackgroundColor(resources.getColor(R.color.main_buttons_Bground))
-
+            mainViewModel.resultLiveData.observe(this@MainActivity) { resultMutableLiveData ->
+                resultTextView.text = resultMutableLiveData.toString()
             }
 
             solveButton.setOnClickListener {
                 val operand1 = operador1EditText.text.toString()
                 val operand2 = operador2EditText.text.toString()
-                var myNotEmpty = true
 
-                if(operand1.isNullOrEmpty()){
-                    operador1EditText.setBackgroundColor(resources.getColor(R.color.Red))
-                    timer.schedule(
-                        timerTask {
-                            operador1EditText.setBackgroundResource(R.drawable.main_operand)
-                        },
-                        1000
+                mainViewModel.checkOperands(operand1, operand2)
+                mainViewModel.process(operand1, operand2, operation)
+            }
+
+            operand1Button.setOnClickListener {
+                operation = operand1Button.text.toString()
+                operand1Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.Crimson
                     )
-                    myNotEmpty = false
-                }
-                if(operand2.isNullOrEmpty()){
-                    operador2EditText.setBackgroundColor(resources.getColor(R.color.Red))
-                    timer.schedule(
-                        timerTask {
-                            operador2EditText.setBackgroundResource(R.drawable.main_operand)
-                        },
-                        1000
+                )
+                operand2Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
                     )
-                    myNotEmpty = false
-                }
-                if(myNotEmpty){
-                    var result = 0.0f
-                    if(operation == ""){
-                        resultTextView.setBackgroundColor(resources.getColor(R.color.Red))
-                        timer.schedule(
-                            timerTask {
-                                resultTextView.setBackgroundResource(R.drawable.main_result)
-                            },
-                            1000
-                        )
-                    }else{
-                        when(operation){
-                            "+" -> result = operand1.toFloat() + operand2.toFloat()
-                            "-" -> result = operand1.toFloat() - operand2.toFloat()
-                            "*" -> result = operand1.toFloat() * operand2.toFloat()
-                            "/" -> result = operand1.toFloat() / operand2.toFloat()
-                        }
-                        resultTextView.text = result.toString()
-                    }
-                }
+                )
+                operand3Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+                operand4Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+            }
+
+            operand2Button.setOnClickListener {
+                operation = operand2Button.text.toString()
+                operand2Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.Crimson
+                    )
+                )
+                operand1Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+                operand3Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+                operand4Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+            }
+
+            operand3Button.setOnClickListener {
+                operation = operand3Button.text.toString()
+                operand3Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.Crimson
+                    )
+                )
+                operand1Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+                operand2Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+                operand4Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+            }
+
+            operand4Button.setOnClickListener {
+                operation = operand4Button.text.toString()
+                operand4Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.Crimson
+                    )
+                )
+                operand1Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+                operand2Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
+                operand3Button.setBackgroundColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.main_buttons_Bground
+                    )
+                )
 
             }
         }
+    }
+
+    private fun ActivityMainBinding.operationWarning() {
+        resultTextView.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.Red))
+        timer.schedule(
+            timerTask {
+                resultTextView.setBackgroundResource(R.drawable.main_result)
+            },
+            1000
+        )
+    }
+
+    private fun ActivityMainBinding.operador2Warning() {
+        operador2EditText.setBackgroundColor(
+            ContextCompat.getColor(
+                applicationContext,
+                R.color.Red
+            )
+        )
+        timer.schedule(
+            timerTask {
+                operador2EditText.setBackgroundResource(R.drawable.main_operand)
+            },
+            1000
+        )
+    }
+
+    private fun ActivityMainBinding.operador1Warning() {
+        operador1EditText.setBackgroundColor(
+            ContextCompat.getColor(
+                applicationContext,
+                R.color.Red
+            )
+        )
+        timer.schedule(
+            timerTask {
+                operador1EditText.setBackgroundResource(R.drawable.main_operand)
+            },
+            1000
+        )
     }
 }
